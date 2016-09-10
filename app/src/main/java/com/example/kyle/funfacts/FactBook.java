@@ -1,8 +1,12 @@
 package com.example.kyle.funfacts;
 
+import android.util.Log;
+
 import java.util.Random;
 
 public class FactBook {
+    public static final String TAG = FactBook.class.getSimpleName();
+    private int mOldNumber = 0;
     //Fields (Member Variablse) - Properties about the object
     private String[] mFacts = {
             "Ants stretch when they wake up in the morning.",
@@ -22,7 +26,12 @@ public class FactBook {
         // Randomly select fact
         Random randomGenerator = new Random();
         int randomNumber = randomGenerator.nextInt(mFacts.length);
+        while(randomNumber==mOldNumber){
+            randomNumber = randomGenerator.nextInt(mFacts.length);
+            Log.d(TAG, "random num changed");
+        }
         fact = mFacts[randomNumber];
+        mOldNumber=randomNumber;
         return fact;
     }
 }

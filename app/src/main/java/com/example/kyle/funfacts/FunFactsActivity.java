@@ -34,14 +34,16 @@ public class FunFactsActivity extends AppCompatActivity {
                 String fact = mFactBook.getFact();
                 int color = mColorWheel.getColor();
                 //update the screen with our dynamic fact
+
                 mFactTextView.setText(fact);
+
+
                 //change background color
                 mRelativeLayout.setBackgroundColor(color);
                 mShowFactButton.setTextColor(color);
             }
         };
         mShowFactButton.setOnClickListener(listener);
-//        Toast.makeText(FunFactsActivity.this, "Yeah Toast!", Toast.LENGTH_LONG).show();
-        Log.d(TAG, "We're logging from the onCreate mthd");
+
     }
 }

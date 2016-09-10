@@ -1,10 +1,13 @@
 package com.example.kyle.funfacts;
 
 import android.graphics.Color;
+import android.util.Log;
 
 import java.util.Random;
 
 public class ColorWheel {
+    public static final String TAG = ColorWheel.class.getSimpleName();
+    private int mOldNumber=0;
     //Fields (Member Variablse) - Properties about the object
     private String[] mColor = {
             "#39add1", // light blue
@@ -29,8 +32,14 @@ public class ColorWheel {
         // Randomly select color
         Random randomGenerator = new Random();
         int randomNumber = randomGenerator.nextInt(mColor.length);
+        while(randomNumber==mOldNumber){
+            randomNumber = randomGenerator.nextInt(mColor.length);
+            Log.d(TAG, "random color changed");
+        }
         color = mColor[randomNumber];
         int colorAsInt = Color.parseColor(color);
+        mOldNumber=randomNumber;
         return colorAsInt;
     }
+
 }
